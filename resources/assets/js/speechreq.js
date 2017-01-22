@@ -29,13 +29,13 @@ function addDynamicCommand(value, pin) {
     var pinNumber = pin;
     var object = {};
     var firstPart = "(zet) (set) (do) (doe) ";
-    var variable = value;
+    var nameOfContact = value;
     var lastPartOn = " aan";
     var lastPartOff = " uit";
     var timerPart1 = " (om) (vanaf) :hour uur (en) :minutes (minuten) (*trash)";
     var timerPart2 = " om :time (*trash)";
     var timerPart3 = " vanaf :time (*trash)";
-    var contactsOneOn = "contactsOneOn";
+/*    var contactsOneOn = "contactsOneOn";
     var contactsTwoOn = "contactsTwoOn";
     var contactsThreeOn = "contactsThreeOn";
     var contactsOneOff = "contactsOneOff";
@@ -52,19 +52,35 @@ function addDynamicCommand(value, pin) {
     var timerOnFullTimeThree = "timerOnFullTimeThree";
     var timerOffFullTimeOne = "timerOffFullTimeOne";
     var timerOffFullTimeTwo = "timerOffFullTimeTwo";
-    var timerOffFullTimeThree = "timerOffFullTimeThree";
+    var timerOffFullTimeThree = "timerOffFullTimeThree";*/
 
-    if (pinNumber == 1) {
-        object[firstPart + variable + lastPartOn] = contactsOneOn;
-        object[firstPart + variable + lastPartOff] = contactsOneOff;
-        object[firstPart + variable + lastPartOn + timerPart1] = timerOnHMOne;
-        object[firstPart + variable + lastPartOff + timerPart1] = timerOffHMOne;
-        object[firstPart + variable + lastPartOn + timerPart2] = timerOnFullTimeOne;
-        object[firstPart + variable + lastPartOff + timerPart2] = timerOffFullTimeOne;
-        object[firstPart + variable + lastPartOn + timerPart3] = timerOnFullTimeOne;
-        object[firstPart + variable + lastPartOff + timerPart3] = timerOffFullTimeOne;
+ /*   if (pinNumber == 1) {*/
+        object[firstPart + nameOfContact + lastPartOn] = function(){
+            toggleContact(pinNumber, 'on');
+        } ;
+        object[firstPart + nameOfContact + lastPartOff] = function(){
+            toggleContact(pinNumber, 'off');
+        };
+        object[firstPart + nameOfContact + lastPartOn + timerPart1] = function(hours,minutes){
+            timerHourMinutes(nameOfContact,hours,minutes,'on',pinNumber);
+        };
+        object[firstPart + nameOfContact + lastPartOff + timerPart1] = function(hours,minutes){
+            timerHourMinutes(nameOfContact,hours,minutes,'off',pinNumber);
+        };
+        object[firstPart + nameOfContact + lastPartOn + timerPart2] = function(time, trash){
+            timerFullTime(nameOfContact,time,'on',pinNumber);
+        };
+        object[firstPart + nameOfContact + lastPartOff + timerPart2] = function(time, trash){
+            timerFullTime(nameOfContact,time,'off',pinNumber);
+        };
+        object[firstPart + nameOfContact + lastPartOn + timerPart3] = function(time, trash){
+            timerFullTime(nameOfContact,time,'on',pinNumber);
+        };
+        object[firstPart + nameOfContact + lastPartOff + timerPart3] = function(time, trash){
+            timerFullTime(nameOfContact,time,'off',pinNumber);
+        };
         annyang.addCommands(object);
-    } else if (pinNumber == 2) {
+/*    } else if (pinNumber == 2) {
         object[firstPart + variable + lastPartOn] = contactsTwoOn;
         object[firstPart + variable + lastPartOff] = contactsTwoOff;
         object[firstPart + variable + lastPartOn + timerPart1] = timerOnHMTwo;
@@ -84,10 +100,8 @@ function addDynamicCommand(value, pin) {
         object[firstPart + variable + lastPartOn + timerPart3] = timerOnFullTimeThree;
         object[firstPart + variable + lastPartOff + timerPart3] = timerOffFullTimeThree;
         annyang.addCommands(object);
-    }
+    }*/
 
-    console.log(object);
-    annyang.addCommands(object);
 }
 function pushCommand(pin, state) {
     $.ajax({
@@ -287,9 +301,20 @@ var timerOffFullTimeThree = function (time, trash) {
     console.log(time);
     console.log('timerFullTime on function executed');
 };
+
+function toggleContact(pin, onOrOff){
+    contactState(pin, onOrOff);
+}
+function timerHourMinutes(name, hour,minutes, onOrOff, pin){
+
+};
+function timerFullTime(name, time, onOrOff, pin ){
+
+};
 var test = function(test){
     console.log("test" + test);
 };
+
 function appendTimer(name, time, onOrOff) {
     var appendClass = '.tasks';
 
