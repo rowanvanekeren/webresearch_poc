@@ -155,11 +155,11 @@ $('.contacts').keypress(function (e) {
     if (e.which == 13) {
 
         if ($(this).hasClass('contacts-1')) {
-            addDynamicCommand($(this).val(),1);
+            addDynamicCommand($(this).val(), 1);
         } else if ($(this).hasClass('contacts-2')) {
-            addDynamicCommand($(this).val(),2);
+            addDynamicCommand($(this).val(), 2);
         } else if ($(this).hasClass('contacts-3')) {
-            addDynamicCommand($(this).val(),3);
+            addDynamicCommand($(this).val(), 3);
         }
         addDynamicCommand($(this).val());
     }
@@ -174,72 +174,72 @@ function addDynamicCommand(value, pin) {
     var timerPart1 = " (om) (vanaf) :hour uur (en) :minutes (minuten) (*trash)";
     var timerPart2 = " om :time (*trash)";
     var timerPart3 = " vanaf :time (*trash)";
-/*    var contactsOneOn = "contactsOneOn";
-    var contactsTwoOn = "contactsTwoOn";
-    var contactsThreeOn = "contactsThreeOn";
-    var contactsOneOff = "contactsOneOff";
-    var contactsTwoOff = "contactsTwoOff";
-    var contactsThreeOff = "contactsThreeOff";
-    var timerOnHMOne = "timerOnHMOne";
-    var timerOnHMTwo = "timerOnHMTwo";
-    var timerOnHMThree = "timerOffHMThree";
-    var timerOffHMOne = "timerOffHMTwo";
-    var timerOffHMTwo = "timerOffHMOne";
-    var timerOffHMThree = "timerOffHMThree";
-    var timerOnFullTimeOne = "timerOnFullTimeOne";
-    var timerOnFullTimeTwo = "timerOnFullTimeTwo";
-    var timerOnFullTimeThree = "timerOnFullTimeThree";
-    var timerOffFullTimeOne = "timerOffFullTimeOne";
-    var timerOffFullTimeTwo = "timerOffFullTimeTwo";
-    var timerOffFullTimeThree = "timerOffFullTimeThree";*/
+    /*    var contactsOneOn = "contactsOneOn";
+     var contactsTwoOn = "contactsTwoOn";
+     var contactsThreeOn = "contactsThreeOn";
+     var contactsOneOff = "contactsOneOff";
+     var contactsTwoOff = "contactsTwoOff";
+     var contactsThreeOff = "contactsThreeOff";
+     var timerOnHMOne = "timerOnHMOne";
+     var timerOnHMTwo = "timerOnHMTwo";
+     var timerOnHMThree = "timerOffHMThree";
+     var timerOffHMOne = "timerOffHMTwo";
+     var timerOffHMTwo = "timerOffHMOne";
+     var timerOffHMThree = "timerOffHMThree";
+     var timerOnFullTimeOne = "timerOnFullTimeOne";
+     var timerOnFullTimeTwo = "timerOnFullTimeTwo";
+     var timerOnFullTimeThree = "timerOnFullTimeThree";
+     var timerOffFullTimeOne = "timerOffFullTimeOne";
+     var timerOffFullTimeTwo = "timerOffFullTimeTwo";
+     var timerOffFullTimeThree = "timerOffFullTimeThree";*/
 
- /*   if (pinNumber == 1) {*/
-        object[firstPart + nameOfContact + lastPartOn] = function(){
-            toggleContact(pinNumber, 'on');
-        } ;
-        object[firstPart + nameOfContact + lastPartOff] = function(){
-            toggleContact(pinNumber, 'off');
-        };
-        object[firstPart + nameOfContact + lastPartOn + timerPart1] = function(hours,minutes){
-            timerHourMinutes(nameOfContact,hours,minutes,'on',pinNumber);
-        };
-        object[firstPart + nameOfContact + lastPartOff + timerPart1] = function(hours,minutes){
-            timerHourMinutes(nameOfContact,hours,minutes,'off',pinNumber);
-        };
-        object[firstPart + nameOfContact + lastPartOn + timerPart2] = function(time, trash){
-            timerFullTime(nameOfContact,time,'on',pinNumber);
-        };
-        object[firstPart + nameOfContact + lastPartOff + timerPart2] = function(time, trash){
-            timerFullTime(nameOfContact,time,'off',pinNumber);
-        };
-        object[firstPart + nameOfContact + lastPartOn + timerPart3] = function(time, trash){
-            timerFullTime(nameOfContact,time,'on',pinNumber);
-        };
-        object[firstPart + nameOfContact + lastPartOff + timerPart3] = function(time, trash){
-            timerFullTime(nameOfContact,time,'off',pinNumber);
-        };
-        annyang.addCommands(object);
-/*    } else if (pinNumber == 2) {
-        object[firstPart + variable + lastPartOn] = contactsTwoOn;
-        object[firstPart + variable + lastPartOff] = contactsTwoOff;
-        object[firstPart + variable + lastPartOn + timerPart1] = timerOnHMTwo;
-        object[firstPart + variable + lastPartOff + timerPart1] = timerOffHMTwo;
-        object[firstPart + variable + lastPartOn + timerPart2] = timerOnFullTimeTwo;
-        object[firstPart + variable + lastPartOff + timerPart2] = timerOffFullTimeTwo;
-        object[firstPart + variable + lastPartOn + timerPart3] = timerOnFullTimeTwo;
-        object[firstPart + variable + lastPartOff + timerPart3] = timerOffFullTimeTwo;
-        annyang.addCommands(object);
-    } else if (pinNumber == 3) {
-        object[firstPart + variable + lastPartOn] = contactsThreeOn;
-        object[firstPart + variable + lastPartOff] = contactsThreeOff;
-        object[firstPart + variable + lastPartOn + timerPart1] = timerOnHMThree;
-        object[firstPart + variable + lastPartOff + timerPart1] = timerOffHMThree;
-        object[firstPart + variable + lastPartOn + timerPart2] = timerOnFullTimeThree;
-        object[firstPart + variable + lastPartOff + timerPart2] = timerOffFullTimeThree;
-        object[firstPart + variable + lastPartOn + timerPart3] = timerOnFullTimeThree;
-        object[firstPart + variable + lastPartOff + timerPart3] = timerOffFullTimeThree;
-        annyang.addCommands(object);
-    }*/
+    /*   if (pinNumber == 1) {*/
+    object[firstPart + nameOfContact + lastPartOn] = function () {
+        toggleContact(pinNumber, 'on');
+    };
+    object[firstPart + nameOfContact + lastPartOff] = function () {
+        toggleContact(pinNumber, 'off');
+    };
+    object[firstPart + nameOfContact + lastPartOn + timerPart1] = function (hours, minutes) {
+        timerHourMinutes(nameOfContact, hours, minutes, 'on', pinNumber);
+    };
+    object[firstPart + nameOfContact + lastPartOff + timerPart1] = function (hours, minutes) {
+        timerHourMinutes(nameOfContact, hours, minutes, 'off', pinNumber);
+    };
+    object[firstPart + nameOfContact + lastPartOn + timerPart2] = function (time, trash) {
+        timerFullTime(nameOfContact, time, 'on', pinNumber);
+    };
+    object[firstPart + nameOfContact + lastPartOff + timerPart2] = function (time, trash) {
+        timerFullTime(nameOfContact, time, 'off', pinNumber);
+    };
+    object[firstPart + nameOfContact + lastPartOn + timerPart3] = function (time, trash) {
+        timerFullTime(nameOfContact, time, 'on', pinNumber);
+    };
+    object[firstPart + nameOfContact + lastPartOff + timerPart3] = function (time, trash) {
+        timerFullTime(nameOfContact, time, 'off', pinNumber);
+    };
+    annyang.addCommands(object);
+    /*    } else if (pinNumber == 2) {
+     object[firstPart + variable + lastPartOn] = contactsTwoOn;
+     object[firstPart + variable + lastPartOff] = contactsTwoOff;
+     object[firstPart + variable + lastPartOn + timerPart1] = timerOnHMTwo;
+     object[firstPart + variable + lastPartOff + timerPart1] = timerOffHMTwo;
+     object[firstPart + variable + lastPartOn + timerPart2] = timerOnFullTimeTwo;
+     object[firstPart + variable + lastPartOff + timerPart2] = timerOffFullTimeTwo;
+     object[firstPart + variable + lastPartOn + timerPart3] = timerOnFullTimeTwo;
+     object[firstPart + variable + lastPartOff + timerPart3] = timerOffFullTimeTwo;
+     annyang.addCommands(object);
+     } else if (pinNumber == 3) {
+     object[firstPart + variable + lastPartOn] = contactsThreeOn;
+     object[firstPart + variable + lastPartOff] = contactsThreeOff;
+     object[firstPart + variable + lastPartOn + timerPart1] = timerOnHMThree;
+     object[firstPart + variable + lastPartOff + timerPart1] = timerOffHMThree;
+     object[firstPart + variable + lastPartOn + timerPart2] = timerOnFullTimeThree;
+     object[firstPart + variable + lastPartOff + timerPart2] = timerOffFullTimeThree;
+     object[firstPart + variable + lastPartOn + timerPart3] = timerOnFullTimeThree;
+     object[firstPart + variable + lastPartOff + timerPart3] = timerOffFullTimeThree;
+     annyang.addCommands(object);
+     }*/
 
 }
 function pushCommand(pin, state) {
@@ -359,122 +359,176 @@ var onStart = function () {
     console.log('now active');
 };
 
-var timerOnHMOne = function (hour, minutes) {
-    console.log(hour + " " + minutes);
-    console.log('timerHM on function executed');
-};
-var timerOnHMTwo = function (hour, minutes) {
-    console.log(hour + " " + minutes);
-    console.log('timerHM on function executed');
-};
-var timerOnHMThree = function (hour, minutes) {
-    console.log(hour + " " + minutes);
-    console.log('timerHM on function executed');
-};
+/*var timerOnHMOne = function (hour, minutes) {
+ console.log(hour + " " + minutes);
+ console.log('timerHM on function executed');
+ };
+ var timerOnHMTwo = function (hour, minutes) {
+ console.log(hour + " " + minutes);
+ console.log('timerHM on function executed');
+ };
+ var timerOnHMThree = function (hour, minutes) {
+ console.log(hour + " " + minutes);
+ console.log('timerHM on function executed');
+ };
 
-var timerOffHMOne = function (hour, minutes) {
-    console.log(hour + " " + minutes);
-    console.log('timerHM on function executed');
-};
-var timerOffHMTwo = function (hour, minutes) {
-    console.log(hour + " " + minutes);
-    console.log('timerHM on function executed');
-};
-var timerOffHMThree = function (hour, minutes) {
-    console.log(hour + " " + minutes);
-    console.log('timerHM on function executed');
-};
+ var timerOffHMOne = function (hour, minutes) {
+ console.log(hour + " " + minutes);
+ console.log('timerHM on function executed');
+ };
+ var timerOffHMTwo = function (hour, minutes) {
+ console.log(hour + " " + minutes);
+ console.log('timerHM on function executed');
+ };
+ var timerOffHMThree = function (hour, minutes) {
+ console.log(hour + " " + minutes);
+ console.log('timerHM on function executed');
+ };
 
-var timerOnFullTimeOne = function (time, trash) {
-    if (time.indexOf(':') > -1) {
-        alert("valid time");
-    } else {
-        console.log('timeformat not valid')
-    }
-    console.log(time);
-    console.log('timerFullTime on function executed');
-};
-var timerOnFullTimeTwo = function (time, trash) {
-    if (time.indexOf(':') > -1) {
-        alert("valid time");
-    } else {
-        console.log('timeformat not valid')
-    }
-    console.log(time);
-    console.log('timerFullTime on function executed');
-};
-var timerOnFullTimeThree = function (time, trash) {
-    if (time.indexOf(':') > -1) {
-        alert("valid time");
-    } else {
-        console.log('timeformat not valid')
-    }
-    console.log(time);
-    console.log('timerFullTime on function executed');
-};
+ var timerOnFullTimeOne = function (time, trash) {
+ if (time.indexOf(':') > -1) {
+ alert("valid time");
+ } else {
+ console.log('timeformat not valid')
+ }
+ console.log(time);
+ console.log('timerFullTime on function executed');
+ };
+ var timerOnFullTimeTwo = function (time, trash) {
+ if (time.indexOf(':') > -1) {
+ alert("valid time");
+ } else {
+ console.log('timeformat not valid')
+ }
+ console.log(time);
+ console.log('timerFullTime on function executed');
+ };
+ var timerOnFullTimeThree = function (time, trash) {
+ if (time.indexOf(':') > -1) {
+ alert("valid time");
+ } else {
+ console.log('timeformat not valid')
+ }
+ console.log(time);
+ console.log('timerFullTime on function executed');
+ };
 
-var timerOffFullTimeOne = function (time, trash) {
-    if (time.indexOf(':') > -1) {
-        alert("valid time");
-    } else {
-        console.log('timeformat not valid')
-    }
-    console.log(time);
-    console.log('timerFullTime on function executed');
-};
-var timerOffFullTimeTwo = function (time, trash) {
-    if (time.indexOf(':') > -1) {
-        alert("valid time");
-    } else {
-        console.log('timeformat not valid')
-    }
-    console.log(time);
-    console.log('timerFullTime on function executed');
-};
-var timerOffFullTimeThree = function (time, trash) {
-    if (time.indexOf(':') > -1) {
-        alert("valid time");
-    } else {
-        console.log('timeformat not valid')
-    }
-    console.log(time);
-    console.log('timerFullTime on function executed');
-};
+ var timerOffFullTimeOne = function (time, trash) {
+ if (time.indexOf(':') > -1) {
+ alert("valid time");
+ } else {
+ console.log('timeformat not valid')
+ }
+ console.log(time);
+ console.log('timerFullTime on function executed');
+ };
+ var timerOffFullTimeTwo = function (time, trash) {
+ if (time.indexOf(':') > -1) {
+ alert("valid time");
+ } else {
+ console.log('timeformat not valid')
+ }
+ console.log(time);
+ console.log('timerFullTime on function executed');
+ };
+ var timerOffFullTimeThree = function (time, trash) {
+ if (time.indexOf(':') > -1) {
+ alert("valid time");
+ } else {
+ console.log('timeformat not valid')
+ }
+ console.log(time);
+ console.log('timerFullTime on function executed');
+ };*/
 
-function toggleContact(pin, onOrOff){
+function toggleContact(pin, onOrOff) {
     contactState(pin, onOrOff);
 }
-function timerHourMinutes(name, hour,minutes, onOrOff, pin){
+function timerHourMinutes(name, hour, minutes, onOrOff, pin) {
+    var validTimeFormat = validTimeGenerator(hour, minutes, null);
+    setTimerCountdown(null,validTimeFormat);
+    console.log(name + hour + minutes + onOrOff, pin);
 
 };
-function timerFullTime(name, time, onOrOff, pin ){
+function timerFullTime(name, time, onOrOff, pin) {
+    var validTimeFormat = validTimeGenerator(null, null, time);
 
+    setTimerCountdown(null,validTimeFormat);
+
+    console.log(name + time + onOrOff, pin);
 };
-var test = function(test){
+var test = function (test) {
     console.log("test" + test);
 };
+function validTimeGenerator(hour, minutes, time) {
+    var currHours = "";
+    var currMinutes = "";
+    var newTime = "";
 
+    if (!isNaN(hour) && !isNaN(minutes) && hour != null && minutes != null) {
+        currHours = hour;
+        currMinutes = minutes;
+    } else if (time != null) {
+        if (!isNaN(time)) {
+            currHours = time;
+            currMinutes = "00";
+        } else {
+            var hMFormat = time.split(":");
+            currHours = hMFormat[0];
+            currMinutes = hMFormat[1];
+        }
+
+    }
+
+    if (!isNaN(currHours) && !isNaN(currMinutes)) {
+        console.log("legit time format");
+
+        newTime = createTimeFormat(currHours) + ":" + createTimeFormat(currMinutes);
+        return newTime;
+    } else {
+        return null;
+    }
+
+    function createTimeFormat(number) {
+        if (number < 10 && number >= 0 && number != "00") {
+            return "0" + number;
+        } else {
+            return number;
+        }
+    }
+
+}
 function appendTimer(name, time, onOrOff) {
-    var appendClass = '.tasks';
 
-    var appendHtml = "<div class='col-md-12 task'>" +
+    var appendClass = '.tasks';
+    var appendHtml = "<div id='"+name+"' class='col-md-12 task'>" +
         " <div class='col-md-8'> <h2>" + name + ":" + onOrOff + "</h2> </div> " +
         "<div class='col-md-4'> <h2>" + time + "</h2> </div> " +
         "</div>";
+
+    $(appendClass).append(appendHtml);
+
 }
 
-function setTimerCountdown(){
+function setTimerCountdown(name, time) {
+    var timerTime = time;
+    var intervalTime = 1000;
     var now = new Date();
-var deadline = new Date();
-/*    deadline.setHours(11);*/
- /*   console.log(deadline.setDay(deadline.getDay()+1));
-    console.log(deadline);*/
-    if(now > deadline){
+    var nowValidFormat = now.toLocaleTimeString('nl-NL', {hour: '2-digit', minute: '2-digit'});
 
-        console.log(deadline.getDay() + 1);
-    }
+    var interval = setInterval(function () {
+        now = new Date();
+        nowValidFormat = now.toLocaleTimeString('nl-NL', {hour: '2-digit', minute: '2-digit'});
+    /*    console.log("timer is working");
+        console.log(nowValidFormat + "ennn" + timerTime );*/
+        if (nowValidFormat == timerTime) {
+            console.log("timer gaat nu af");
+            clearInterval(interval);
+
+        }
+    }, intervalTime);
 }
-setTimerCountdown();
+
 var commands = {
     // annyang will capture anything after a splat (*) and pass it to the function.
     // e.g. saying "Show me Batman and Robin" is the same as calling showFlickr('Batman and Robin');
@@ -486,13 +540,13 @@ var commands = {
     '(zet) (set) (do) (doe) alles uit': turnAllOff,
     '(zet) (set) (do) (doe) scherm uit': terminalOff,
     '(zet) (set) (do) (doe) scherm aan': terminalOn,
-    '(zet) (set) (do) (doe) test aan': function(){
-    test('lul');
-}
+    /*    '(zet) (set) (do) (doe) test aan': function(){
+     test('lul');
+     }*/
 
-/*    '(zet) (set) (do) (doe) waaier aan (om) (vanaf) :hour uur (en) :minutes (minuten) (*trash)': timerOnHM,
-    '(zet) (set) (do) (doe) waaier aan om :time (*trash)': timerOnFullTime,
-    '(zet) (set) (do) (doe) waaier aan vanaf :time (*trash)': timerOnFullTime*/
+    /*    '(zet) (set) (do) (doe) waaier aan (om) (vanaf) :hour uur (en) :minutes (minuten) (*trash)': timerOnHM,
+     '(zet) (set) (do) (doe) waaier aan om :time (*trash)': timerOnFullTime,
+     '(zet) (set) (do) (doe) waaier aan vanaf :time (*trash)': timerOnFullTime*/
 
     /*'(zet) (set) (do) (doe) waaier :day aan (om) (vanaf) :hour uur :minutes' : timerOn*/
 

@@ -7699,6 +7699,11 @@ body {
   z-index: 50;
 }
 
+.hidden {
+  visibility: hidden;
+  display: none;
+}
+
 .terminal-off {
   background-color: black;
 }
