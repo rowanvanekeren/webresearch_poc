@@ -3,31 +3,31 @@ var contactOneID = "#dot-1";
 var contactTwoID = "#dot-2";
 var contactThreeID = "#dot-3";
 var terminalID = "#terminal";
-
-var terminalOn = function (){
+var userSaidGlobal = "none";
+var terminalOn = function () {
     $(terminalID).removeClass('terminal-off');
     $(terminalID).addClass('terminal-on');
 };
-var terminalOff = function (){
+var terminalOff = function () {
     $(terminalID).removeClass('terminal-on');
     $(terminalID).addClass('terminal-off');
 };
-$('.contacts').keypress(function(e) {
-    if(e.which == 13) {
+$('.contacts').keypress(function (e) {
+    if (e.which == 13) {
 
-        if($(this).hasClass('contacts-1')){
-      /*      alert($(this).val() +  " 1");*/
-        }else if($(this).hasClass('contacts-2')){
-           /* alert($(this).val()  +  " 2");*/
-        }else if($(this).hasClass('contacts-3')){
-          /*  alert($(this).val()  +  " 3");*/
+        if ($(this).hasClass('contacts-1')) {
+            addDynamicCommand($(this).val(),1);
+        } else if ($(this).hasClass('contacts-2')) {
+            addDynamicCommand($(this).val(),2);
+        } else if ($(this).hasClass('contacts-3')) {
+            addDynamicCommand($(this).val(),3);
         }
         addDynamicCommand($(this).val());
     }
 });
-function addDynamicCommand(value, pin){
+function addDynamicCommand(value, pin) {
     var pinNumber = pin;
-    var object ={};
+    var object = {};
     var firstPart = "(zet) (set) (do) (doe) ";
     var variable = value;
     var lastPartOn = " aan";
@@ -43,66 +43,75 @@ function addDynamicCommand(value, pin){
     var contactsThreeOff = "contactsThreeOff";
     var timerOnHMOne = "timerOnHMOne";
     var timerOnHMTwo = "timerOnHMTwo";
-    var timerOnHMThree = "timerOnHMThree";
+    var timerOnHMThree = "timerOffHMThree";
+    var timerOffHMOne = "timerOffHMTwo";
+    var timerOffHMTwo = "timerOffHMOne";
+    var timerOffHMThree = "timerOffHMThree";
     var timerOnFullTimeOne = "timerOnFullTimeOne";
     var timerOnFullTimeTwo = "timerOnFullTimeTwo";
     var timerOnFullTimeThree = "timerOnFullTimeThree";
+    var timerOffFullTimeOne = "timerOffFullTimeOne";
+    var timerOffFullTimeTwo = "timerOffFullTimeTwo";
+    var timerOffFullTimeThree = "timerOffFullTimeThree";
 
-    if(pinNumber == 1){
+    if (pinNumber == 1) {
         object[firstPart + variable + lastPartOn] = contactsOneOn;
         object[firstPart + variable + lastPartOff] = contactsOneOff;
         object[firstPart + variable + lastPartOn + timerPart1] = timerOnHMOne;
-        object[firstPart + variable +lastPartOff + timerPart1] = timerOffHMTOne;
+        object[firstPart + variable + lastPartOff + timerPart1] = timerOffHMOne;
         object[firstPart + variable + lastPartOn + timerPart2] = timerOnFullTimeOne;
-        object[firstPart + variable +lastPartOff + timerPart2] = timerOffFullTimeOne;
-        object[firstPart + variable +  lastPartOn+ timerPart3] = timerOnFullTimeOne;
-        object[firstPart + variable +lastPartOff + timerPart3] = timerOffFullTimeOne;
-    }else if(pinNumber == 2){
+        object[firstPart + variable + lastPartOff + timerPart2] = timerOffFullTimeOne;
+        object[firstPart + variable + lastPartOn + timerPart3] = timerOnFullTimeOne;
+        object[firstPart + variable + lastPartOff + timerPart3] = timerOffFullTimeOne;
+        annyang.addCommands(object);
+    } else if (pinNumber == 2) {
         object[firstPart + variable + lastPartOn] = contactsTwoOn;
         object[firstPart + variable + lastPartOff] = contactsTwoOff;
-        object[firstPart + variable +lastPartOn + timerPart1] = timerOnHMTwo;
-        object[firstPart + variable +lastPartOff + timerPart1] = timerOffHMTwo;
-        object[firstPart + variable +lastPartOn + timerPart2] = timerOnFullTimeTwo;
-        object[firstPart + variable +lastPartOff + timerPart2] = timerOffFullTimeTwo;
-        object[firstPart + variable +lastPartOn + timerPart3] = timerOnFullTimeTwo;
-        object[firstPart + variable +lastPartOff + timerPart3] = timerOffFullTimeTwo;
-    }else if(pinNumber == 3){
+        object[firstPart + variable + lastPartOn + timerPart1] = timerOnHMTwo;
+        object[firstPart + variable + lastPartOff + timerPart1] = timerOffHMTwo;
+        object[firstPart + variable + lastPartOn + timerPart2] = timerOnFullTimeTwo;
+        object[firstPart + variable + lastPartOff + timerPart2] = timerOffFullTimeTwo;
+        object[firstPart + variable + lastPartOn + timerPart3] = timerOnFullTimeTwo;
+        object[firstPart + variable + lastPartOff + timerPart3] = timerOffFullTimeTwo;
+        annyang.addCommands(object);
+    } else if (pinNumber == 3) {
         object[firstPart + variable + lastPartOn] = contactsThreeOn;
         object[firstPart + variable + lastPartOff] = contactsThreeOff;
-        object[firstPart + variable +lastPartOn + timerPart1] = timerOnHMThree;
-        object[firstPart + variable +lastPartOff + timerPart1] = timerOffHMThree;
-        object[firstPart + variable +lastPartOn + timerPart2] = timerOnFullTimeThree;
-        object[firstPart + variable +lastPartOff + timerPart2] = timerOffFullTimeThree;
-        object[firstPart + variable +lastPartOn + timerPart3] = timerOnFullTimeThree;
-        object[firstPart + variable +lastPartOff + timerPart3] = timerOffFullTimeThree;
+        object[firstPart + variable + lastPartOn + timerPart1] = timerOnHMThree;
+        object[firstPart + variable + lastPartOff + timerPart1] = timerOffHMThree;
+        object[firstPart + variable + lastPartOn + timerPart2] = timerOnFullTimeThree;
+        object[firstPart + variable + lastPartOff + timerPart2] = timerOffFullTimeThree;
+        object[firstPart + variable + lastPartOn + timerPart3] = timerOnFullTimeThree;
+        object[firstPart + variable + lastPartOff + timerPart3] = timerOffFullTimeThree;
+        annyang.addCommands(object);
     }
 
     console.log(object);
     annyang.addCommands(object);
 }
-function pushCommand(pin, state){
+function pushCommand(pin, state) {
     $.ajax({
         url: "pushCommand",
         type: "post",
-        headers:{
+        headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
         data: {
             pin: pin,
             state: state
-        } ,
+        },
         success: function (response) {
             // you will get response from your php page (what you echo or print)
 
         },
-        error: function(jqXHR, textStatus, errorThrown) {
+        error: function (jqXHR, textStatus, errorThrown) {
             console.log(textStatus, errorThrown);
         }
 
 
     });
 }
-function allDotsOff(){
+function allDotsOff() {
     $(contactOneID).removeClass('green');
     $(contactOneID).addClass('red');
     $(contactTwoID).removeClass('green');
@@ -110,7 +119,7 @@ function allDotsOff(){
     $(contactThreeID).removeClass('green');
     $(contactThreeID).addClass('red');
 }
-function allDotsOn(){
+function allDotsOn() {
     $(contactOneID).removeClass('red');
     $(contactOneID).addClass('green');
     $(contactTwoID).removeClass('red');
@@ -118,145 +127,208 @@ function allDotsOn(){
     $(contactThreeID).removeClass('red');
     $(contactThreeID).addClass('green');
 }
-var showSomething = function (){
+var showSomething = function () {
     $('h1').html('hier jonge nu kende wat zien');
 };
-function contactState(contact,state){
-    switch(contact){
+function contactState(contact, state) {
+    switch (contact) {
         case '1':
         case 'een':
         case 'één':
         case 'aan':
-        function one(){console.log('een is called' + light + state);
-            pushCommand(0,state);
+        function one() {
+            console.log('een is called' + light + state);
+            pushCommand(0, state);
         }
+
             one();
             break;
         case '2':
         case 'twee':
-        function two(){console.log('twee is called' + light  + state);
-            pushCommand(1,state);}
+        function two() {
+            console.log('twee is called' + light + state);
+            pushCommand(1, state);
+        }
+
             two();
             break;
         case '3':
         case 'drie':
-        function three(){console.log('drie is called' + light  + state);
+        function three() {
+            console.log('drie is called' + light + state);
 
-            pushCommand(2,state);
+            pushCommand(2, state);
         }
+
             three();
             break;
 
     }
 }
-var turnLightOn = function(contact){
-    contactState(contact,'on');
+var turnLightOn = function (contact) {
+    contactState(contact, 'on');
 };
-var turnLightOff = function(contact){
-    contactState(contact,'off');
+var turnLightOff = function (contact) {
+    contactState(contact, 'off');
 };
 
-var turnAllOff = function (){
-    pushCommand(-1,'all_off');
+var turnAllOff = function () {
+    pushCommand(-1, 'all_off');
     allDotsOff();
 
 };
 
-var contactsOneOn = function(){
-    contactState(1,'on');
+var contactsOneOn = function () {
+    contactState(1, 'on');
 };
-var contactsTwoOn = function(){
-    contactState(2,'on');
+var contactsTwoOn = function () {
+    contactState(2, 'on');
 };
-var contactsThreeOn = function(){
-    contactState(2,'on');
-};
-
-var contactsOneOff = function(){
-    contactState(1,'off');
-};
-var contactsThreeOff = function(){
-    contactState(3,'off');
-};
-var contactsTwoOff = function(){
-    contactState(2,'off');
+var contactsThreeOn = function () {
+    contactState(2, 'on');
 };
 
-var turnAllOn = function(){
-    pushCommand(-1,'all_on');
+var contactsOneOff = function () {
+    contactState(1, 'off');
+};
+var contactsThreeOff = function () {
+    contactState(3, 'off');
+};
+var contactsTwoOff = function () {
+    contactState(2, 'off');
+};
+
+var turnAllOn = function () {
+    pushCommand(-1, 'all_on');
     allDotsOn()
 };
-var onStart = function(){
+var onStart = function () {
     console.log('now active');
 };
 
-var timerOnHMOne = function(hour,minutes){
-console.log(hour + " " + minutes);
-    console.log('timerHM on function executed');
-};
-var timerOnHMTwo = function(hour,minutes){
+var timerOnHMOne = function (hour, minutes) {
     console.log(hour + " " + minutes);
     console.log('timerHM on function executed');
 };
-var timerOnHMThree = function(hour,minutes){
+var timerOnHMTwo = function (hour, minutes) {
+    console.log(hour + " " + minutes);
+    console.log('timerHM on function executed');
+};
+var timerOnHMThree = function (hour, minutes) {
     console.log(hour + " " + minutes);
     console.log('timerHM on function executed');
 };
 
-var timerOnFullTimeOne = function(time, trash){
-    if (time.indexOf(':') > -1)
-    {
+var timerOffHMOne = function (hour, minutes) {
+    console.log(hour + " " + minutes);
+    console.log('timerHM on function executed');
+};
+var timerOffHMTwo = function (hour, minutes) {
+    console.log(hour + " " + minutes);
+    console.log('timerHM on function executed');
+};
+var timerOffHMThree = function (hour, minutes) {
+    console.log(hour + " " + minutes);
+    console.log('timerHM on function executed');
+};
+
+var timerOnFullTimeOne = function (time, trash) {
+    if (time.indexOf(':') > -1) {
         alert("valid time");
-    }else{
+    } else {
         console.log('timeformat not valid')
     }
     console.log(time);
     console.log('timerFullTime on function executed');
 };
-var timerOnFullTimeTwo = function(time, trash){
-    if (time.indexOf(':') > -1)
-    {
+var timerOnFullTimeTwo = function (time, trash) {
+    if (time.indexOf(':') > -1) {
         alert("valid time");
-    }else{
+    } else {
         console.log('timeformat not valid')
     }
     console.log(time);
     console.log('timerFullTime on function executed');
 };
-var timerOnFullTimeThree = function(time, trash){
-    if (time.indexOf(':') > -1)
-    {
+var timerOnFullTimeThree = function (time, trash) {
+    if (time.indexOf(':') > -1) {
         alert("valid time");
-    }else{
+    } else {
         console.log('timeformat not valid')
     }
     console.log(time);
     console.log('timerFullTime on function executed');
 };
 
-function appendTimer (name, time, onOrOff){
+var timerOffFullTimeOne = function (time, trash) {
+    if (time.indexOf(':') > -1) {
+        alert("valid time");
+    } else {
+        console.log('timeformat not valid')
+    }
+    console.log(time);
+    console.log('timerFullTime on function executed');
+};
+var timerOffFullTimeTwo = function (time, trash) {
+    if (time.indexOf(':') > -1) {
+        alert("valid time");
+    } else {
+        console.log('timeformat not valid')
+    }
+    console.log(time);
+    console.log('timerFullTime on function executed');
+};
+var timerOffFullTimeThree = function (time, trash) {
+    if (time.indexOf(':') > -1) {
+        alert("valid time");
+    } else {
+        console.log('timeformat not valid')
+    }
+    console.log(time);
+    console.log('timerFullTime on function executed');
+};
+var test = function(test){
+    console.log("test" + test);
+};
+function appendTimer(name, time, onOrOff) {
     var appendClass = '.tasks';
 
     var appendHtml = "<div class='col-md-12 task'>" +
-        " <div class='col-md-8'> <h2>"+ name +":"+ onOrOff + "</h2> </div> " +
-        "<div class='col-md-4'> <h2>"+ time + "</h2> </div> " +
+        " <div class='col-md-8'> <h2>" + name + ":" + onOrOff + "</h2> </div> " +
+        "<div class='col-md-4'> <h2>" + time + "</h2> </div> " +
         "</div>";
 }
 
+function setTimerCountdown(){
+    var now = new Date();
+var deadline = new Date();
+/*    deadline.setHours(11);*/
+ /*   console.log(deadline.setDay(deadline.getDay()+1));
+    console.log(deadline);*/
+    if(now > deadline){
+
+        console.log(deadline.getDay() + 1);
+    }
+}
+setTimerCountdown();
 var commands = {
     // annyang will capture anything after a splat (*) and pass it to the function.
     // e.g. saying "Show me Batman and Robin" is the same as calling showFlickr('Batman and Robin');
     //'show me *tag': showFlickr,
-    'laat iets zien' : showSomething,
-    '(zet) (set) (do) (doe) lamp :number aan' : turnLightOn,
-    '(zet) (set) (do) (doe) lamp :number uit' : turnLightOff,
-    '(zet) (set) (do) (doe) alles aan' : turnAllOn,
-    '(zet) (set) (do) (doe) alles uit' : turnAllOff,
-    '(zet) (set) (do) (doe) scherm uit' : terminalOff,
-    '(zet) (set) (do) (doe) scherm aan' : terminalOn,
-    '(zet) (set) (do) (doe) waaier aan (om) (vanaf) :hour uur (en) :minutes (minuten) (*trash)' : timerOnHM,
-    '(zet) (set) (do) (doe) waaier aan om :time (*trash)'  : timerOnFullTime,
-    '(zet) (set) (do) (doe) waaier aan vanaf :time (*trash)'  : timerOnFullTime
+    'laat iets zien': showSomething,
+    '(zet) (set) (do) (doe) lamp :number aan': turnLightOn,
+    '(zet) (set) (do) (doe) lamp :number uit': turnLightOff,
+    '(zet) (set) (do) (doe) alles aan': turnAllOn,
+    '(zet) (set) (do) (doe) alles uit': turnAllOff,
+    '(zet) (set) (do) (doe) scherm uit': terminalOff,
+    '(zet) (set) (do) (doe) scherm aan': terminalOn,
+    '(zet) (set) (do) (doe) test aan': function(){
+    test('lul');
+}
+
+/*    '(zet) (set) (do) (doe) waaier aan (om) (vanaf) :hour uur (en) :minutes (minuten) (*trash)': timerOnHM,
+    '(zet) (set) (do) (doe) waaier aan om :time (*trash)': timerOnFullTime,
+    '(zet) (set) (do) (doe) waaier aan vanaf :time (*trash)': timerOnFullTime*/
 
     /*'(zet) (set) (do) (doe) waaier :day aan (om) (vanaf) :hour uur :minutes' : timerOn*/
 
@@ -272,7 +344,8 @@ var commands = {
 annyang.setLanguage('nl-NL');
 annyang.addCommands(commands);
 annyang.addCallback('start', onStart);
-annyang.addCallback('resultMatch', function(userSaid, commandText, phrases) {
+annyang.addCallback('resultMatch', function (userSaid, commandText, phrases) {
+    userSaidGlobal = userSaid;
     console.log(userSaid); // sample output: 'hello'
     $(resultClass).html(userSaid);
     console.log(commandText); // sample output: 'hello (there)'
