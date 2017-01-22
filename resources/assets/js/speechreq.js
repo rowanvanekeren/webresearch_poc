@@ -16,13 +16,13 @@ $('.contacts').keypress(function (e) {
     if (e.which == 13) {
 
         if ($(this).hasClass('contacts-1')) {
-            addDynamicCommand($(this).val(), 1);
+            addDynamicCommand($(this).val(),1);
         } else if ($(this).hasClass('contacts-2')) {
-            addDynamicCommand($(this).val(), 2);
+            addDynamicCommand($(this).val(),2);
         } else if ($(this).hasClass('contacts-3')) {
-            addDynamicCommand($(this).val(), 3);
+            addDynamicCommand($(this).val(),3);
         }
-        addDynamicCommand($(this).val());
+        /*addDynamicCommand($(this).val());*/
     }
 });
 function addDynamicCommand(value, pin) {
@@ -56,6 +56,7 @@ function addDynamicCommand(value, pin) {
 
     /*   if (pinNumber == 1) {*/
     object[firstPart + nameOfContact + lastPartOn] = function () {
+        console.log('toglle contact on', pinNumber);
         toggleContact(pinNumber, 'on');
     };
     object[firstPart + nameOfContact + lastPartOff] = function () {
@@ -133,6 +134,33 @@ function allDotsOff() {
     $(contactThreeID).removeClass('green');
     $(contactThreeID).addClass('red');
 }
+function toggleDot(pin, onOrOff){
+    if(pin == 1){
+       if(onOrOff == 'on'){
+           $(contactOneID).removeClass('red');
+           $(contactOneID).addClass('green');
+       } else if(onOrOff == 'off'){
+           $(contactOneID).removeClass('green');
+           $(contactOneID).addClass('red');
+       }
+    }else if(pin ==2){
+        if(onOrOff == 'on'){
+            $(contactTwoID).removeClass('red');
+            $(contactTwoID).addClass('green');
+        } else if(onOrOff == 'off'){
+            $(contactTwoID).removeClass('green');
+            $(contactTwoID).addClass('red');
+        }
+    }else if(pin == 3){
+        if(onOrOff == 'on'){
+            $(contactThreeID).removeClass('red');
+            $(contactThreeID).addClass('green');
+        } else if(onOrOff == 'off'){
+            $(contactThreeID).removeClass('green');
+            $(contactThreeID).addClass('red');
+        }
+    }
+}
 function allDotsOn() {
     $(contactOneID).removeClass('red');
     $(contactOneID).addClass('green');
@@ -144,32 +172,37 @@ function allDotsOn() {
 var showSomething = function () {
     $('h1').html('hier jonge nu kende wat zien');
 };
+
 function contactState(contact, state) {
+    console.log("contactstate is called" + contact);
     switch (contact) {
+        case 1:
         case '1':
         case 'een':
         case 'één':
         case 'aan':
         function one() {
-            console.log('een is called' + light + state);
+            console.log('een is called' + contact + state);
             pushCommand(0, state);
         }
 
             one();
             break;
+        case 2:
         case '2':
         case 'twee':
         function two() {
-            console.log('twee is called' + light + state);
+            console.log('twee is called' + contact + state);
             pushCommand(1, state);
         }
 
             two();
             break;
+        case 3:
         case '3':
         case 'drie':
         function three() {
-            console.log('drie is called' + light + state);
+            console.log('drie is called' + contact + state);
 
             pushCommand(2, state);
         }
@@ -179,6 +212,8 @@ function contactState(contact, state) {
 
     }
 }
+
+
 var turnLightOn = function (contact) {
     contactState(contact, 'on');
 };
@@ -303,18 +338,19 @@ var onStart = function () {
  };*/
 
 function toggleContact(pin, onOrOff) {
+    toggleDot(pin,onOrOff);
     contactState(pin, onOrOff);
 }
 function timerHourMinutes(name, hour, minutes, onOrOff, pin) {
     var validTimeFormat = validTimeGenerator(hour, minutes, null);
-    setTimerCountdown(null,validTimeFormat);
+    setTimerCountdown(name, validTimeFormat, onOrOff, pin);
     console.log(name + hour + minutes + onOrOff, pin);
 
 };
 function timerFullTime(name, time, onOrOff, pin) {
     var validTimeFormat = validTimeGenerator(null, null, time);
 
-    setTimerCountdown(null,validTimeFormat);
+    setTimerCountdown(name, validTimeFormat, onOrOff, pin);
 
     console.log(name + time + onOrOff, pin);
 };
@@ -351,7 +387,7 @@ function validTimeGenerator(hour, minutes, time) {
     }
 
     function createTimeFormat(number) {
-        if (number < 10 && number >= 0 && number != "00") {
+        if (number < 10 && number >= 0 && number != "00" && number.length != 2) {
             return "0" + number;
         } else {
             return number;
@@ -360,18 +396,21 @@ function validTimeGenerator(hour, minutes, time) {
 
 }
 function appendTimer(name, time, onOrOff) {
-
+    var uniqmilli = new Date().getUTCMilliseconds()
     var appendClass = '.tasks';
-    var appendHtml = "<div id='"+name+"' class='col-md-12 task'>" +
+    var appendHtml = "<div id='" + uniqmilli + "' class='col-md-12 task'>" +
         " <div class='col-md-8'> <h2>" + name + ":" + onOrOff + "</h2> </div> " +
         "<div class='col-md-4'> <h2>" + time + "</h2> </div> " +
         "</div>";
-
+    console.log(appendHtml);
     $(appendClass).append(appendHtml);
+
+    return '#' + uniqmilli;
 
 }
 
-function setTimerCountdown(name, time) {
+function setTimerCountdown(name, time, onOrOff, pin) {
+    var timerDiv = appendTimer(name, time, onOrOff);
     var timerTime = time;
     var intervalTime = 1000;
     var now = new Date();
@@ -380,10 +419,12 @@ function setTimerCountdown(name, time) {
     var interval = setInterval(function () {
         now = new Date();
         nowValidFormat = now.toLocaleTimeString('nl-NL', {hour: '2-digit', minute: '2-digit'});
-    /*    console.log("timer is working");
-        console.log(nowValidFormat + "ennn" + timerTime );*/
+
         if (nowValidFormat == timerTime) {
             console.log("timer gaat nu af");
+            toggleContact(pin,onOrOff);
+            toggleDot(pin,onOrOff);
+            $(timerDiv).remove();
             clearInterval(interval);
 
         }
