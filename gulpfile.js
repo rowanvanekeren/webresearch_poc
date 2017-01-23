@@ -21,6 +21,6 @@ elixir(function(mix) {
 
 elixir(function(mix) {
     mix.scripts(
-        ['annyang.min.js','commands.js','speechreq.js'],'public/js/main.js', 'resources/assets/js'
+        ['annyang.min.js','responsivevoice.js','speechreq.js'],'public/js/main.js', 'resources/assets/js'
     );
 });

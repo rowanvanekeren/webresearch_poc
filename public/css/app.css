@@ -7745,6 +7745,10 @@ body {
   margin-bottom: 15px;
 }
 
+.usr-input .active {
+  border: 1px solid green;
+}
+
 .disabled {
   -webkit-filter: hue-rotate(265deg);
   filter: hue-rotate(265deg);
@@ -7820,6 +7824,26 @@ body {
     -webkit-filter: hue-rotate(0deg);
     filter: hue-rotate(0deg);
   }
+}
+
+.error {
+  height: 40px;
+  background-color: darkred;
+  line-height: 40px;
+  color: white;
+  border-radius: 10px;
+}
+
+.soundDiv {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  z-index: 9;
+  cursor: hand;
+}
+
+.soundDiv h4 {
+  cursor: hand;
 }
 
 /*# sourceMappingURL=app.css.map */

@@ -23,6 +23,7 @@ body{
   height: 400px;
   background-color:$background-containers;
 }
+
 .tasks{
   height: 400px;
   background-color:$background-containers;
@@ -46,6 +47,10 @@ body{
    padding: 5px;
    height: 30px;
    margin-bottom: 15px;
+
+ }
+ .active {
+   border: 1px solid green;
  }
 }
 
@@ -94,4 +99,24 @@ body{
 
   100% {  -webkit-filter: hue-rotate(0deg);
     filter: hue-rotate(0deg);}
+}
+
+.error{
+  height: 40px;
+  background-color:darkred;
+  line-height: 40px;
+  color:white;
+  border-radius: 10px;
+}
+
+.soundDiv{
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  z-index: 9;
+  cursor: hand;
+  h4{
+    cursor: hand;
+  }
+
 }
